@@ -43,19 +43,10 @@
 
 
  <div align="center">
-<img width="707" src="https://github.com/LimYeri/HIHU-3.0/assets/98745330/90edd160-db54-4dfe-bec1-e851d2065814"><br>
-     <p> main page </p>
+    <img src="https://github.com/LimYeri/HIHU-3.0/assets/98745330/90edd160-db54-4dfe-bec1-e851d2065814"><br>
  </div>
 
- 
-<figure class="half">
-    <a href="link"><img src="https://github.com/LimYeri/HIHU-3.0/assets/98745330/90edd160-db54-4dfe-bec1-e851d2065814"></a>
-    <a href="link"><img src="https://github.com/LimYeri/HIHU-3.0/assets/98745330/b59d733b-fd0d-49d9-b5b8-689befb9b41c"></a>
-<figcaption>2개이미지.</figcaption></figure>
-
-
-
-![image](https://github.com/LimYeri/HIHU-3.0/assets/98745330/b59d733b-fd0d-49d9-b5b8-689befb9b41c) | ![image](https://github.com/LimYeri/HIHU-3.0/assets/98745330/b59d733b-fd0d-49d9-b5b8-689befb9b41c)
+![image](https://github.com/LimYeri/HIHU-3.0/assets/98745330/90edd160-db54-4dfe-bec1-e851d2065814) | ![image](https://github.com/LimYeri/HIHU-3.0/assets/98745330/b59d733b-fd0d-49d9-b5b8-689befb9b41c)
 ---|---|
 
 
