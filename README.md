@@ -57,9 +57,13 @@
 ---|---|
 - HIHU는 반응형 웹 디자인을 적용하여 사용자가 사용하는 기기에 따라 UI가 최적화되도록 구현하였습니다.
 
+
+---
+
+
 ## 👩🏻‍💻 멤버
 
-### Front-end
+### Front-end & Design
 
 |               | github                             |
 | ------------- | ---------------------------------- |
@@ -71,4 +75,29 @@
 |               | github                             |
 | ------------- | ---------------------------------- |
 | 임예리        |  https://github.com/LimYeri       |
+
+
+## :hammer_and_wrench: 사용 기술
+
+### Front-end
+
+**프로그래밍 언어**<br>
+<img src="https://img.shields.io/badge/HTML5-E34F26?style=flat-square&logo=HTML5&logoColor=white"/> <img src="https://img.shields.io/badge/CSS3-1572B6?style=flat-square&logo=CSS3&logoColor=white"/> <img src="https://img.shields.io/badge/Javascript-F7DF1E?style=flat-square&logo=Javascript&logoColor=white"/>
+<br>
+
+
+### Back-end
+
+**언어**<br>
+<img src="https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=Python&logoColor=white"/>
+ <img src="https://img.shields.io/badge/Javascript-F7DF1E?style=flat-square&logo=Javascript&logoColor=white"/><br><br>
+**프레임워크/라이브러리**<br>
+<img src="https://img.shields.io/badge/Django-092E20?style=flat-square&logo=django&logoColor=white"/> <br>
+
+**데이터베이스**<br>
+<img src="https://img.shields.io/badge/Sqlite-003B57?style=flat-square&logo=Sqlite&logoColor=white">
+
+**배포**<br>
+<img src="https://img.shields.io/badge/aws-232F3E?style=flat-square&logo=aws&logoColor=white">
+
 
