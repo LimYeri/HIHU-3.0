@@ -53,6 +53,10 @@
 ![image](https://github.com/LimYeri/HIHU-3.0/assets/98745330/9fe60657-d35b-4641-9b85-5d8a1f4b91e6) | ![image](https://github.com/LimYeri/HIHU-3.0/assets/98745330/4c2b25f0-7b55-4f9f-8de8-c2e83470ad59)
 ---|---|
 
+![image](https://github.com/LimYeri/HIHU-3.0/assets/98745330/f8ffef66-0551-4faf-bb6b-0e437576310a) | ![image](https://github.com/LimYeri/HIHU-3.0/assets/98745330/a6adc653-e9b0-48e7-9bd4-dbc02a92f81d)
+---|---|
+- HIHU는 반응형 웹 디자인을 적용하여 사용자가 사용하는 기기에 따라 UI가 최적화되도록 구현하였습니다.
+
 ## 👩🏻‍💻 멤버
 
 ### Front-end
