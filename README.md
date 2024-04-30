@@ -94,13 +94,14 @@
 
 **언어**<br>
 <img src="https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=Python&logoColor=white"/>
+
 **프레임워크/라이브러리**<br>
 <img src="https://img.shields.io/badge/Django-092E20?style=flat-square&logo=django&logoColor=white"/> <br>
 
 **데이터베이스**<br>
-<img src="https://img.shields.io/badge/amazonrds-527FFF?style=flat-square&logo=amazonrds&logoColor=white">
+<img src="https://img.shields.io/badge/Amazon RDS-527FFF?style=flat-square&logo=Amazon RDS&logoColor=white">
 
 **배포**<br>
-<img src="https://img.shields.io/badge/amazonecs-FF9900?style=flat-square&logo=amazonecs&logoColor=white">
+<img src="https://img.shields.io/badge/Amazon EC2-FF9900?style=flat-square&logo=Amazon EC2&logoColor=white">
 
 
