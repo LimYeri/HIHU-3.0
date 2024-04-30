@@ -25,7 +25,7 @@
 | 박대영 |    https://github.com/CocoPig1028|
 
 
-### back-end
+### Back-end & Server
 
 |               | github                             |
 | ------------- | ---------------------------------- |
