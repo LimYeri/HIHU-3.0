@@ -41,6 +41,7 @@
  ✔️ **한서대 패밀리 사이트 연결:** 여러 한서대 관련 패밀리 사이트를 쉽고 빠르게 접근할 수 있도록 모든 관련 링크를 한 곳에 모아 제공   <br><br>
  <div align="center">
 <img width="707" src="https://github.com/LimYeri/HIHU-3.0/assets/98745330/90edd160-db54-4dfe-bec1-e851d2065814"><br>
+     <p> main page </p>
  </div>
 
 
