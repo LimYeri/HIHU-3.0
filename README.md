@@ -44,11 +44,14 @@
 
  <div align="center">
     <img src="https://github.com/LimYeri/HIHU-3.0/assets/98745330/90edd160-db54-4dfe-bec1-e851d2065814"><br>
+    <img src="https://github.com/LimYeri/HIHU-3.0/assets/98745330/c9119724-f91e-4d4e-8838-5bad8e2d8019"><br>
  </div>
 
-![image](https://github.com/LimYeri/HIHU-3.0/assets/98745330/90edd160-db54-4dfe-bec1-e851d2065814) | ![image](https://github.com/LimYeri/HIHU-3.0/assets/98745330/b59d733b-fd0d-49d9-b5b8-689befb9b41c)
+![image](https://github.com/LimYeri/HIHU-3.0/assets/98745330/b1ffce00-65c1-430a-95f2-87557b7db874) | ![image](https://github.com/LimYeri/HIHU-3.0/assets/98745330/410b0114-cee5-4117-8576-629a1fbeef39)
 ---|---|
 
+![image](https://github.com/LimYeri/HIHU-3.0/assets/98745330/9fe60657-d35b-4641-9b85-5d8a1f4b91e6) | ![image](https://github.com/LimYeri/HIHU-3.0/assets/98745330/4c2b25f0-7b55-4f9f-8de8-c2e83470ad59)
+---|---|
 
 ## 👩🏻‍💻 멤버
 
