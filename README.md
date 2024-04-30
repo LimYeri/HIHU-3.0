@@ -48,7 +48,7 @@
  </div>
 
  
-https://github.com/LimYeri/HIHU-3.0/assets/98745330/90edd160-db54-4dfe-bec1-e851d2065814 | https://github.com/LimYeri/HIHU-3.0/assets/98745330/b59d733b-fd0d-49d9-b5b8-689befb9b41c
+![image]https://github.com/LimYeri/HIHU-3.0/assets/98745330/90edd160-db54-4dfe-bec1-e851d2065814 | ![image]https://github.com/LimYeri/HIHU-3.0/assets/98745330/b59d733b-fd0d-49d9-b5b8-689befb9b41c
 ---|---|
 
 
