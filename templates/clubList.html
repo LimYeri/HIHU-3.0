@@ -1,0 +1,72 @@
+{% load static %}
+{% include 'headerBox.html' %}
+{% block head %}
+    <title>HIHU3.0</title>
+
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/clubListStyle.css' %}">
+{% endblock %}
+    <div class = "hero">
+        <div class = "clubListHero">
+            <div class = "menuTitle">
+                <h2 class = "tSemi menuTText tBlack">동아리</h2>
+            </div>
+            <div>
+                <ul class = "clubListBox">
+                    {% for c in club_list %}
+                        <a href = "{{ c.get_absolute_url }}" class = "clubList">
+                            <div class = "clubListText">
+                                <span class = "tBlack mainText">{{ c.name }}</span>
+                                <span class = "tGrey subText">{{ c.kind }}</span>
+                            </div>
+                            <div class = "clubImg">
+                                {% if c.clubImg %}
+                                    <img class = "clubImgItem" src="{{ c.clubImg.url }}">
+                                {% else %}
+                                    <img class = "clubImgItem" src="{% static 'img/DefalutImg.png' %}">
+                                {% endif %}
+                            </div>
+                        </a>
+                    {% endfor %}
+                </ul>
+            </div>
+            <div class = "navNum">
+                {% if page_obj.has_previous %}
+                    <div class = "prevNotice">
+                        <a href="?page={{ page_obj.previous_page_number }}"><span class = "tBlack mainText">&#9664; &nbsp;</span></a>
+                    </div>
+                {% else %}
+                    <div class = "prevNotice">
+                        <span class = "tLightGrey mainText">&#9664; &nbsp;</span>
+                    </div>
+                {% endif %}
+
+                {% for index in page_obj.paginator.page_range  %}
+                    {% if index == page_obj.number %}
+                        <div class = "noticeNum">
+                            <a href="?page={{ index }}"><span class = "tMain mainText">{{ index }}</span></a>
+                        </div>
+                    {% else %}
+                        <div class = "noticeNum">
+                            <a href="?page={{ index }}"><span class = "tGrey mainText">{{ index }}</span></a>
+                        </div>
+                    {% endif %}
+                    <span>&nbsp;</span>
+                {% endfor %}
+
+                {% if page_obj.has_next %}
+                    <div class = "nextNotice">
+                        <a href="?page={{ page_obj.next_page_number }}"><span class = "tBlack mainText">&nbsp;&#9654;</span></a>
+                    </div>
+                {% else %}
+                    <div class = "nextNotice">
+                        <span class = "tLightGrey mainText">&nbsp;&#9654;</span>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+{% include 'footerBox.html' %}
+</body>
+</html>

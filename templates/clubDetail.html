@@ -1,0 +1,79 @@
+{% load static %}
+{% include 'headerBox.html' %}
+{% block head %}
+    <title>HIHU3.0</title>
+
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/Detailstyle.css' %}">
+{% endblock %}
+    <div class = "hero">
+        <div class="clubDetailHero">
+            <div class = "menuTitle">
+                <h2 class = "tSemi menuTText tBlack">멋쟁이 사자처럼</h2>
+            </div>
+            <div class = "clubDetailBox">
+                <div class="clubListScroll">
+                    {% for c in clubList %}
+                        {% if c == clubDetail %}
+                            <a class = "clubListName tMain mainText" href="{{ c.get_absolute_url }}"><p>{{ c.name }}</p></a>
+                        {% else %}
+                            <a class = "clubListName tBlack mainText" href="{{ c.get_absolute_url }}"><p>{{ c.name }}</p></a>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+                <div class="clubDetailScroll">
+                    <div class = "clubDetailTextBox">
+                        <div class="clubMainImg">
+                            {% if clubDetail.clubImg %}
+                                <img class = "clubDetailImgItem" src="{{ clubDetail.clubImg.url }}">
+                            {% else %}
+                                <img class = "clubDetailImgItem" src="{% static 'img/DefalutImg.png' %}">
+                            {% endif %}
+                        </div>
+                        <div class="clubDetailText">
+                            <div class = "clubDetailTop">
+                                <div class="clubDetailName">
+                                    <p class = "tBlack menuTText">{{ clubDetail.name }}</p>
+                                </div>
+                            </div>
+                            <div class="clubDetailBottom">
+                                {% if clubDetail.contact %}
+                                    <div class="clubDetailContact">
+                                        <p class = "tBlack mainText">연락처:&nbsp;</p>
+                                        <a href = "tel:{{ clubDetail.contact }}" class = "tBlack mainText">전화하기</a>
+                                    </div>
+                                {% endif %}
+                                {% if clubDetail.period %}
+                                    <div class="clubDetailDate">
+                                        <p class = "tBlack mainText">모집기간:&nbsp;</p>
+                                        <p class = "tBlack mainText">{{ clubDetail.period }}</p>
+                                    </div>
+                                {% endif %}
+                                {% if clubDetail.number %}
+                                    <div class="clubDetailQuantity">
+                                        <p class = "tBlack mainText">모집인원:&nbsp;</p>
+                                        <p class = "tBlack mainText">{{ clubDetail.number }}</p>
+                                    </div>
+                                {% endif %}
+                                {% if clubDetail.link %}
+                                    <div class="clubDetailLink">
+                                        <p class = "tBlack mainText">모집 링크 바로가기 &rarr;&nbsp;</p>
+                                        <a href = "{{ clubDetail.link }}"> {{ clubDetail.link }}</a>
+                                        <!-- <a href = "" class = "tBlack mainText">www.naver.com</a> -->
+                                    </div>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="clubDetailMain">
+                        <div class="clubDetailMainText">
+                            <p class = "tBlack mainText">{{ clubDetail.content|linebreaksbr }}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% include 'footerBox.html' %}
+</body>
+</html>

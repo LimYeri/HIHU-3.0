@@ -1,0 +1,87 @@
+{% load static %}
+{% include 'headerBox.html' %}
+{% block head %}
+    <title>HIHU3.0</title>
+
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/shopDetailStyle.css' %}">
+{% endblock %}
+    <div class = "hero">
+        <div class="shopDetailHero">
+            <div class = "menuTitle">
+                <h2 class = "tSemi menuTText tBlack">{{ shopKind }}</h2>
+            </div>
+            <div class = "shopDetailBox">
+                <div class="shopListScroll">
+                    {% for v in shopList %}
+                        {% if v == shopDetail %}
+                            <a class = "shopListName tMain mainText" href="{{ v.get_absolute_url }}"><p>{{ v.name }}</p></a>
+                        {% else %}
+                            <a class = "shopListName tBlack mainText" href="{{ v.get_absolute_url }}"><p>{{ v.name }}</p></a>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+                <div class="shopDetailScroll">
+                    <div class = "shopDetailTop">
+                        <div class = "shopDetailNameBox">
+                            <p class="shopDetailName tBlack menuTText">{{ shopDetail.name }}</p>
+                        </div>
+                        <div class="shopDetailTopBox">
+                            <div class = "shopDetailImgBox">
+                                {% if shopDetail.shopImg %}
+                                    <img class = "shopDetailImg" src="{{ shopDetail.shopImg.url }}" alt="">
+                                {% else %}
+                                    <img class = "shopDetailImg" src="{% static 'img/DefaultImg.png' %}" alt="">
+                                {% endif %}
+                            </div>
+                            <div class = "shopDetailTextBox">
+                                {% if shopDetail.phone %}
+                                    <p class="shopDetailCate tBlack bigmainText">연락처</p>
+                                    <p class="tBlack mainText shopDetailTextCenter">{{ shopDetail.phone }}</p>
+                                {% endif %}
+                                <p class="shopDetailCate tBlack bigmainText">영업시간</p>
+                                <p class="tBlack mainText shopDetailTextCenter">{{ shopDetail.time|linebreaksbr }}</p>
+                                <p class="shopDetailCate tBlack bigmainText">주소</p>
+                                <p class="tBlack mainText shopDetailTextCenter">{{ shopDetail.address }}</p>
+                                {% if shopDetail.link %}
+                                    <a href="{{ shopDetail.link }}" class="shopDetailMap">
+                                        <img class = "naverMapIcon" src="{% static 'img/naverMap.jpeg' %}" alt="">
+                                        <p class = "tBlack mainText tBlack mainText">위치보러가기</p>
+                                    </a>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                    <div class = "shopDetailBottom">
+                        <div class = "shopDetailMenuBox">
+                            <ul class = "menuCateBox">
+                                {% for key, value in shopMenu.items %}
+                                    <div class = "menuCategory">
+                                        <p class = "tBlack bigmainText">{{ key }}</p>
+                                    </div>
+                                    {% for m in value %}
+                                        <li class = "menu">
+                                            <div class = "menuName">
+                                                <p class = "tBlack mainText">{{ m.name }}</p>
+                                            </div>
+                                            <div class = "menuPrice">
+                                                <div class="menuPriceNum">
+                                                    <p class = "tBlack mainText">{{ m.price }}</p>
+                                                </div>
+                                                <div class="menuPriceWon">
+                                                    <p class = "tBlack mainText">원</p>
+                                                </div>
+                                            </div>
+                                        </li>
+                                    {% endfor %}
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% include 'footerBox.html' %}
+</body>
+</html>

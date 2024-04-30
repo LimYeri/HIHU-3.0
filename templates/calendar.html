@@ -1,0 +1,327 @@
+{% load static %}
+{% include 'headerBox.html' %}
+{% block head %}
+    <title>HIHU3.0</title>
+
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/calendarStyle.css' %}">
+{% endblock %}
+    <div class = "hero">
+        <div class="calendarHero">
+            <div class="menuTitle">
+                <h2 class="tSemi menuTText tBlack">학사일정</h2>
+            </div>
+            <div class = "calendarListPart">
+                <input type="hidden" name = "inputMonth" class = "monthValue" value = "">
+                <div class="calendarContainer">
+                    <div class="sec_cal">
+                        <div class="cal_nav">
+                            <a href="javascript:;" class="nav-btn go-prev mainText">prev</a>
+                            <!-- <input type = "button" href="javascript:;" class="nav-btn go-prev mainText" name = "month" value = ""></input> -->
+                            <div class="year-month menuTText"></div>
+                            <!-- <input type = "button" href="javascript:;" class="nav-btn go-next mainText" name = "month" value = ""></input> -->
+                            <a href="javascript:;" class="nav-btn go-next mainText">next</a>
+                        </div>
+                        <div class="cal_wrap">
+                            <div class="days">
+                            <div class="day mainText">월</div>
+                            <div class="day mainText">화</div>
+                            <div class="day mainText">수</div>
+                            <div class="day mainText">목</div>
+                            <div class="day mainText">금</div>
+                            <div class="day mainText">토</div>
+                            <div class="day mainText">일</div>
+                            </div>
+                            <div class="dates mainText"></div>
+                        </div>
+                        </div>
+                </div>
+                <div class="listPartContainer">
+                    <div class="listPart">
+                        {% for s in Schedule_list %}
+                            <div class="calendarList">
+                                <div class="objectBox">
+                                    <p class = "tBlack mainText">{{ s.event }}</p>
+                                    {% if s.startDate == s.endDate %}
+                                        <p class = "tGrey subText">{{ s.startDate|date:'Y년 n월 j일' }}</p>
+                                    {% else %}
+                                        <p class = "tGrey subText">{{ s.startDate|date:'Y년 n월 j일' }} - {{ s.endDate|date:'Y년 n월 j일' }}</p>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% include 'footerBox.html' %}
+<!-- <script src = "/static/js/today.js"></script> -->
+<!-- <script src = "{% static 'js/calendar.js' %}"></script> -->
+<!-- <script type="text/javascript" src="/static/js/calendar.js"></script> -->
+<script type = "text/javascript">
+    $(function() {
+        calendarInit();
+    });
+    var findDate;
+    var findMonth;
+    
+    var nowMonth = document.querySelector(".monthValue");
+    
+    var date = new Date();
+    var utc = date.getTime() + (date.getTimezoneOffset() * 60 * 1000);
+    var kstGap = 9 * 60 * 60 * 1000;
+    var today = new Date(utc + kstGap);
+
+    var thisMonth = new Date(today.getFullYear(), today.getMonth(), today.getDate());
+    
+    var clickDay = document.querySelector(".day");
+
+    var todoList = document.querySelector('.listPart');
+    
+    var currentYear = thisMonth.getFullYear();
+    var currentMonth = thisMonth.getMonth();
+    
+    var eventQuantity = 3;
+    
+    var eventStartDay = "2023-02-06";
+    var eventEndDay = "2023-02-12";
+    
+    var eventDateStart;
+    var eventDateEnd;
+    
+    var eventStoE = (eventDateEnd - eventDateStart)/(24 * 60 * 60 * 1000);
+    var eventCtoE;
+
+    var listLength;
+    var list;
+
+    function calendarInit() {
+        listLength = {{ listcount }};
+        var currentDate = thisMonth.getDate();
+
+        list = [
+        {% for s in Schedule_list %}
+            {
+                fields :
+                {
+                    startDate: "{{ s.startDate|date:'Y-m-d' }}",
+                    endDate: "{{ s.endDate|date:'Y-m-d' }}",
+                    event: "{{ s.event }}",
+                },
+            },
+        {% endfor %}];
+    
+        renderCalender(thisMonth);
+    
+        function renderCalender(thisMonth) {
+
+            currentYear = thisMonth.getFullYear();
+            currentMonth = thisMonth.getMonth();
+            currentDate = thisMonth.getDate();
+    
+            var startDay = new Date(currentYear, currentMonth, 0);
+            var prevDate = startDay.getDate();
+            var prevDay = startDay.getDay();
+    
+            var endDay = new Date(currentYear, currentMonth + 1, 0);
+            var nextDate = endDay.getDate();
+            var nextDay = endDay.getDay();
+    
+            $('.year-month').text(currentYear + '.' + (currentMonth + 1));
+    
+            calendar = document.querySelector('.dates')
+            calendar.innerHTML = '';
+            
+            for (var i = prevDate - prevDay + 1; i <= prevDate; i++) {
+                calendar.innerHTML = calendar.innerHTML + '<button class="day prev disable">' + i + '</button>'
+            }
+            
+            //for (var i = 1; i <= nextDate; i++) {
+            //    calendar.innerHTML = calendar.innerHTML + '<button onclick = "checkTarget(this)" class="day current">' + i + '</button>'
+            //}
+
+            
+            for(var i = 1; i <= nextDate; i++) {
+                var checkDate = new Date(currentYear, currentMonth, i);
+                var checkDateNum = 0;
+                
+                for(var j = 0; j < listLength; j++) {
+                    //eventCtoE = (list[j].fields.endDate - findDate)/(24 * 60 * 60 * 1000) - 0.375;
+                    
+                    //eventDateEnd = list[j].fields.EndDate.substr(0,4);
+                    var x = new Date(list[j].fields.endDate);
+                    var y = new Date(list[j].fields.startDate);
+                    var eventCtoEt = Math.floor((x - checkDate)/(24 * 60 * 60 * 1000));
+                    var eventStoEt = Math.floor((x - y)/(24 * 60 * 60 * 1000));
+        
+                    var xCh = x.getFullYear() + '년 ' + (x.getMonth()+1) + '월 ' + x.getDate() + '일'
+                    var yCh = y.getFullYear() + '년 ' + (y.getMonth()+1) + '월 ' + y.getDate() + '일'
+        
+                    if(eventStoEt >= eventCtoEt && eventCtoEt >=0) {
+                        checkDateNum = checkDateNum + 1;
+                    }
+                }
+                if(checkDateNum >= 1) {
+                    calendar.innerHTML = calendar.innerHTML + '<button onclick = "checkTarget(this)" class="day current haveList able">' + i + '</button>'
+                } else {
+                    calendar.innerHTML = calendar.innerHTML + '<button onclick = "checkTarget(this)" class="day current nonList able">' + i + '</button>'
+                }
+                //calendar.innerHTML = calendar.innerHTML + '<button onclick = "checkTarget(this)" class="day current nonList">' + i + '</button>'
+            }
+
+            for (var i = 1; i <= (7 - nextDay == 7 ? 0 : 7 - nextDay); i++) {
+                calendar.innerHTML = calendar.innerHTML + '<button class="day next disable">' + i + '</button>'
+            }
+    
+            if (today.getMonth() == currentMonth) {
+                todayDate = today.getDate();
+                var currentMonthDate = document.querySelectorAll('.dates .current');
+                currentMonthDate[todayDate -1].classList.add('today');
+            }
+        }
+
+            
+        findMonth = currentMonth + 1;
+        if(findMonth >= 10) {
+            monthValue = findMonth;
+        } else {
+            monthValue = "0" + findMonth;
+        }
+    
+        localStorage.setItem("monthValue", monthValue);
+        $('input[name = inputMonth]').attr('value',monthValue);
+
+        $('.go-prev').on('click', function() {
+            todoList.innerHTML = '';
+            thisMonth = new Date(currentYear, currentMonth - 1, 1);
+            renderCalender(thisMonth);
+            findMonth = currentMonth + 1;
+            
+            if(findMonth >= 10) {
+                monthValue = findMonth;
+            } else {
+                monthValue = "0" + findMonth;
+            }
+        
+            // localStorage.setItem("monthValue", monthValue);
+            $('input[name = inputMonth]').attr('value',monthValue);
+    
+            var month = $(".monthValue").attr('value');
+    
+    
+            $.ajax({
+                type: "POST",
+                url: "{% url 'ScheduleHIHU' %}",
+                data: { 'month': month, 'csrfmiddlewaretoken': '{{ csrf_token }}' },
+                dataType: "text",
+                success: function(response){
+                    list = JSON.parse(response).Schedule_json
+                    listLength = list.length;
+                    for(i = 0; i < listLength; i++) {
+                        var x = new Date(list[i].fields.endDate);
+                        var y = new Date(list[i].fields.startDate);
+                        
+                        var xCh = x.getFullYear() + '년 ' + (x.getMonth()+1) + '월 ' + x.getDate() + '일'
+                        var yCh = y.getFullYear() + '년 ' + (y.getMonth()+1) + '월 ' + y.getDate() + '일'
+        
+                        if(xCh == yCh) {
+                            todoList.innerHTML = todoList.innerHTML + '<div class = "calendarList"><div class = "objectBox"><p class = "tBlack mainText">' + list[i].fields.event + '</p><p class = "tGrey subText">' + xCh + '</p></div></div>';
+                        } else {
+                            todoList.innerHTML = todoList.innerHTML + '<div class = "calendarList"><div class = "objectBox"><p class = "tBlack mainText">' + list[i].fields.event + '</p><p class = "tGrey subText">' + yCh + " - " + xCh + '</p></div></div>';
+                        }
+                    }
+                    
+                    renderCalender(thisMonth);
+                } ,
+            })
+
+        });
+    
+        $('.go-next').on('click', function() {
+            todoList.innerHTML = '';
+            thisMonth = new Date(currentYear, currentMonth + 1, 1);
+            renderCalender(thisMonth); 
+            findMonth = currentMonth + 1;
+            if(findMonth >= 10) {
+                monthValue = findMonth;
+            } else {
+                monthValue = "0" + findMonth;
+            }
+        
+            // localStorage.setItem("monthValue", monthValue);
+            $('input[name = inputMonth]').attr('value',monthValue);
+    
+            var month = $(".monthValue").attr('value');
+
+            $.ajax({
+                type: "POST",
+                url: "{% url 'ScheduleHIHU' %}",
+                data: { 'month': month, 'csrfmiddlewaretoken': '{{ csrf_token }}' },
+                dataType: "text",
+                success: function(response){
+                    list = JSON.parse(response).Schedule_json
+                    listLength = list.length;
+                    for(i = 0; i < listLength; i++) {
+                        var x = new Date(list[i].fields.endDate);
+                        var y = new Date(list[i].fields.startDate);
+        
+                        var xCh = x.getFullYear() + '년 ' + (x.getMonth()+1) + '월 ' + x.getDate() + '일'
+                        var yCh = y.getFullYear() + '년 ' + (y.getMonth()+1) + '월 ' + y.getDate() + '일'
+
+                        if(xCh == yCh) {
+                            todoList.innerHTML = todoList.innerHTML + '<div class = "calendarList"><div class = "objectBox"><p class = "tBlack mainText">' + list[i].fields.event + '</p><p class = "tGrey subText">' + xCh + '</p></div></div>';
+                        } else {
+                            todoList.innerHTML = todoList.innerHTML + '<div class = "calendarList"><div class = "objectBox"><p class = "tBlack mainText">' + list[i].fields.event + '</p><p class = "tGrey subText">' + yCh + " - " + xCh + '</p></div></div>';
+                        }
+                    }
+                    renderCalender(thisMonth);
+                } ,
+            })
+        });
+    }
+    
+    const checkTarget = (e) => {
+        todoList.innerHTML = '';
+        var checkListNum = listLength;
+        var checkList;
+        var ele = e;
+
+        
+        //위에서 this로 받았기 때문에 태그가 살아있다. 그렇기 때문에 아래의 정규식으로 태그를 없애준다.
+        var newEle = ele.innerHTML.replace(/<[^>]*>?/g, '');
+    
+        
+        //위의 newEle의 값을 findDay로 변환 시켜 저장해준다.
+        findDate = new Date(currentYear, currentMonth, newEle);
+        findDay = findDate.getDate();
+
+        for(var j = 0; j < listLength; j++) {
+            //eventCtoE = (list[j].fields.endDate - findDate)/(24 * 60 * 60 * 1000) - 0.375;
+            
+            //eventDateEnd = list[j].fields.EndDate.substr(0,4);
+            var x = new Date(list[j].fields.endDate);
+            var y = new Date(list[j].fields.startDate);
+            eventCtoE = Math.floor((x - findDate)/(24 * 60 * 60 * 1000));
+            eventStoE = Math.floor((x - y)/(24 * 60 * 60 * 1000));
+
+
+            var xCh = x.getFullYear() + '년 ' + (x.getMonth()+1) + '월 ' + x.getDate() + '일'
+            var yCh = y.getFullYear() + '년 ' + (y.getMonth()+1) + '월 ' + y.getDate() + '일'
+
+            if(eventStoE >= eventCtoE && eventCtoE >=0) {
+                if(xCh == yCh) {
+                    todoList.innerHTML = todoList.innerHTML + '<div class = "calendarList"><div class = "objectBox"><p class = "tBlack mainText">' + list[j].fields.event + '</p><p class = "tGrey subText">' + xCh + '</p></div></div>';
+                } else {
+                    todoList.innerHTML = todoList.innerHTML + '<div class = "calendarList"><div class = "objectBox"><p class = "tBlack mainText">' + list[j].fields.event + '</p><p class = "tGrey subText">' + yCh + " - " + xCh + '</p></div></div>';
+                }
+                checkListNum -= 1;
+            }
+        }
+        if(checkListNum == listLength) {
+            todoList.innerHTML = todoList.innerHTML + '<div class = "calendarList"><div class = "objectBox"><p class = "tBlack mainText">' + "일정이 없습니다." + '</p><p class = "tGrey subText"></p></div></div>';
+        }
+    }
+</script>
+</body>
+</html>

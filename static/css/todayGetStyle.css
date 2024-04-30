@@ -1,0 +1,110 @@
+@media screen and (max-width: 960px) {
+    .todayShopHero {
+        width: 100%;
+    }
+
+    .menuTitle {
+        justify-content: center;
+    }
+}
+
+@media screen and (min-width: 960px) {
+    .todayShopHero {
+        width: calc(100% - 200px);
+    }
+
+}
+
+.hero {
+  display: flex;
+  justify-content: center;
+}
+
+.todayShopHero {
+    height: 1032px;
+}
+
+.menuSelectBox {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 712px;
+    border-bottom: 1px solid #878787;
+    
+}
+
+.mentSectionCover {
+    display: flex;
+    justify-content: center;
+}
+
+.mentSection, .itemImgSection, .selectBtnSection, .itemCoverImgSection {
+    display: flex;
+    justify-content: center;
+}
+
+.itemCoverImgSection {
+    margin-top: 24px;
+    border-radius: 20px;
+    margin-bottom: 24px;
+}
+
+.itemImgSection {
+    /* border: 1px solid black; */
+    /* width: 400px; */
+    margin-top: 24px;
+    border-radius: 20px;
+    margin-bottom: 24px;
+    display: none;
+}
+
+.itemImg {
+    width: 300px;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 20px;
+}
+
+.itemExSection {
+    /* border: 1px solid black; */
+    display: flex;
+    justify-content: center;
+    margin: 24px;
+    display: none;
+}
+
+.selectBtn {
+    width: 120px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* border: 1px solid black; */
+    border: none;
+    /* background: white; */
+    /* background: #ee5b3b; */
+    background: none;
+    /* border-radius: 10px; */
+    border-bottom: 1px solid #878787;
+    border-top: 1px solid #878787;
+    margin: 8px;
+}
+
+.selectBtn:hover {
+    /* background: #FDE6E5; */
+    background: #ee5b3b;
+    color: white;
+    transition: 0.5s;
+}
+
+.getBtn {
+    display: flex;
+}
+
+.reGetBtn {
+    display: none;
+}
+
+.seeMenuBtn {
+    display: none;
+}

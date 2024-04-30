@@ -1,0 +1,103 @@
+@media screen and (max-width: 950px) {
+    .todayShopHero {
+        height: 832px;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        /* justify-content: center; */
+    }
+    .menuImgCon {
+        display: none;
+    }
+    .menuSelectBox {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        
+        /* border: 1px solid black; */
+        /* height: 512px; */
+        /* border-bottom: 1px solid #878787; */
+    }
+    .menuSelect {
+        width: 60%;
+        height: 150px;
+        border-radius: 10px;
+        border: 1px solid #EE5B3B;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-top: 16px;
+        margin-bottom: 16px;
+    }
+    .menuTitle {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+}
+
+@media screen and (min-width: 950px) {
+    .todayShopHero {
+        height: 832px;
+        width: calc(100% - 200px);
+    }
+    .menuImgCon {
+        width: 100%;
+        height: 248px;
+        display: flex;
+        justify-content: center;
+        align-items: flex-end;
+    }
+    .menuSelectBox {
+        
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 512px;
+        border-bottom: 1px solid #878787;
+    }
+    .menuSelect {
+        width: 30%;
+        height: 400px;
+        /* background-color: #EE5B3B; */
+        border-radius: 10px;
+        border: 1px solid #EE5B3B;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-left: 16px;
+        margin-right: 16px;
+    }  
+    .menuSelectImg {
+        width: 80%;
+        /* height: 248px; */
+    } 
+}
+
+
+.hero {
+    display: flex;
+    justify-content: center;
+}
+
+.menuSelect:hover {
+    background-color: #EE5B3B;
+}
+
+.menuImgBox:hover > .imgText{
+    color: white;
+}
+
+.imgText {
+    margin-top: 8px;
+}
+
+.menuImgBox {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}

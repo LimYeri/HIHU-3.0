@@ -1,0 +1,91 @@
+{% load static %}
+{% include 'headerBox.html' %}
+{% block head %}
+    <title>HIHU3.0</title>
+
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/indexstyle.css' %}">
+{% endblock %}
+    <div class = "hero">
+        <div class = "slideBanner">
+            <div class = "slider">
+                <ul class="slides">
+                    {% for b in Banners %}
+                        <li>
+                            <img class = "slideImg" src="{{ b.img.url }}" alt="">
+                            <div class="textSlideContainer">
+                                <p class = "tWhite menuTText">{{ b.sub_text_1 }}</p>
+                                <h3 class = "tWhite subTitleText">{{ b.main_text }}</h3>
+                                <p class = "tWhite menuTText">{{ b.sub_text_2 }}</p>
+                            </div>
+                        </li>
+                    {% endfor %}
+                </ul>
+                
+            </div>
+            <div class = "controller">
+                <div class = "playController">
+                    <p class = "prev">
+                        <img class = "bannerCon" src="{% static 'img/leftCon.png' %}" alt="">
+                    </p>
+                    <div class = "stopGo">
+                        <img class = "bannerConPlay" src="{% static 'img/playCon.png' %}" alt="">
+                    </div>
+                    <p class = "next">
+                        <img class = "bannerCon" src="{% static 'img/rightCon.png' %}" alt="">
+                    </p>
+                </div>
+                <div class = "progressWrap">
+                    <!--구현 못한 상태 추후 타이머 기능 추가 하여 생성-->
+                    <div class = "progress">
+                        <!-- <progress class = "progressBar" value = "20" max = "100"></progress> -->
+                        <div class="bar" id = "bar"></div>
+                    </div>
+                </div>
+                <div class = "page mainText tWhite">
+                    <p></p>
+                </div>
+            </div>
+        </div>
+        <div class = "schoolSection">
+            <div class = "schCalender mainText tWhite">
+                <div class = "schCalTitle">
+                    <p class = "tSemi">학사일정</p>
+                    <a class = "tWhite tRegular" href="/schedule">더보기 &rarr;</a>
+                </div>
+                <div class = "schCalText">
+                    {% for e in events %}
+                        <li class = "tRegular schCalList">
+                            <a class = "tWhite" href="">
+                                <p class = "listTitle">{{ e.event }}</p>
+                            </a>
+                            {% if e.startDate == e.endDate%}
+                                <p class = "listDate">{{ e.startDate|date:'Y-m-d' }}</p>
+                            {% else %}
+                                <p class = "listDate">{{ e.startDate|date:'Y-m-d' }} - {{ e.endDate|date:'Y-m-d' }}</p>
+                            {% endif %}
+                        </li>
+                    {% endfor %}
+                </div>
+            </div>
+            <div class = "schNotice mainText tWhite">
+                <p class = "tSemi">학사공지</p>
+                <a class = "schNoticeGo tWhite tRegular" href="https://www.hanseo.ac.kr/boardCnts/list.do?boardID=298&m=040101&s=hs">학사 공지사항 보러가기 &rarr;</a>
+            </div>
+        </div>
+        <div class = "hihuNotice mainText tBlack">
+            <div class = "tSemi hNTitle">
+                <p>HIHU Notice</p>
+            </div>
+            <a href="{{ recent_notice.get_absolute_url }}">
+                <div class = "tRegular">
+                    <p class = "tGrey mainText">{{ recent_notice }}</p>
+                </div>
+            </a>
+        </div>
+    </div>
+
+{% include 'footerBox.html' %}
+    <script src = "/static/js/slideBanner.js"></script>
+</body>
+</html>

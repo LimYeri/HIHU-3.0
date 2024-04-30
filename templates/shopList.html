@@ -1,0 +1,103 @@
+{% load static %}
+{% include 'headerBox.html' %}
+{% block head %}
+    <title>HIHU3.0</title>
+
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/shopListStyle.css' %}">
+{% endblock %}
+    <div class = "hero">
+        <div class="shopListHero">
+            <div class = "menuTitle">
+                {% if searched %}
+                    <h2 class = "tSemi menuTText tBlack">{{ searched }} 의 검색 결과</h2>
+                {% else %}
+                    <h2 class = "tSemi menuTText tBlack">{{ shopKind }}</h2>
+                {% endif %}
+
+                <form action="" method="POST">
+                    {% csrf_token %}
+                    <div class="searchBarSection">
+                        <div class="selectBox">
+                            <select name="search_mode" id="search_mode" class="searchOption mainText">
+                                <option value="shop" selected>매장</option>
+                                <option value="menu">메뉴</option>
+                            </select>
+                            <div class = "selectBtn">
+                                <img class = "selectBtnImg" src="{% static 'img/select.png' %}" alt="">
+                            </div>
+                        </div>
+                        <input class = "searchBar mainText" type="text" placeholder="검색어 입력" name="searched">
+                        <button class="searchBtn" type="submit">
+                            <img class = "searchImg" src="{% static 'img/search.png' %}">
+                        </button>
+                    </div>
+                </form>
+            </div>
+            <div class = "menuListBox">
+                {% if page_obj.has_previous %}
+                    <div class = "prevBtn">
+                        <button class = "prevBtnImgBox" type = "button">
+                            <a href="?page={{ page_obj.previous_page_number }}"><img class = "prevBtnImg" src="{% static 'img/nextPolygon.png' %}" alt=""></a>
+                        </button>
+                    </div>
+                {% else %}
+                    <div class = "prevBtn">
+                        <button class = "prevBtnImgBox" type = "button">
+                            <img class = "prevBtnImg" src="{% static 'img/nonNextPolygon.png' %}" alt="">
+                        </button>
+                    </div>
+                {% endif %}
+                <ul class = "menuListItemBox">
+                    {% for s in shop_list %}
+                        <li class = "menuListItem">
+                            <a href="{{ s.get_absolute_url }}">
+                                {% if s.shopImg %}
+                                    <img class = "shopMainImg" src="{{ s.shopImg.url }}" alt="">
+                                {% else %}
+                                    <img class = "shopMainImg" src="{% static 'img/DefaultImg.png' %}" alt="">
+                                {% endif %}
+                                <div class = "shopMainText">
+                                    <p class = "tBlack mainText">{{ s.name }}</p>
+                                    {% if s.shopType %}
+                                        <p class = "tGrey subText">{{ s.shopType }}</p>
+                                    {% endif %}
+                                </div>
+                            </a>
+                        </li>
+                    {% endfor %}
+                </ul>
+                {% if page_obj.has_next %}
+                    <div class = "nextBtn">
+                        <button class = "nextBtnImgBox" type = "button">
+                            <a href="?page={{ page_obj.next_page_number }}"><img class = "nextBtnImg" src="{% static 'img/nextPolygon.png' %}" alt=""></a>
+                        </button>
+                    </div>
+                {% else %}
+                    <div class = "nextBtn">
+                        <button class = "nextBtnImgBox" type = "button">
+                            <img class = "nextBtnImg" src="{% static 'img/nonNextPolygon.png' %}" alt="">
+                        </button>
+                    </div>
+                {% endif %}
+                
+            </div>
+            <div class = "navNum">
+                {% for index in page_obj.paginator.page_range  %}
+                    {% if index == page_obj.number %}
+                        <div class = "noticeNum">
+                            <a href="?page={{ index }}"><span class = "tMain mainText">{{ index }}</span></a>
+                        </div>
+                    {% else %}
+                        <div class = "noticeNum">
+                            <a href="?page={{ index }}"><span class = "tGrey mainText">{{ index }}</span></a>
+                        </div>
+                    {% endif %}
+                    <span>&nbsp;</span>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+{% include 'footerBox.html' %}
+</body>
+</html>

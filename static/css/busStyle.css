@@ -1,0 +1,274 @@
+@media screen and (max-width: 950px) {
+    .busTimeHero {
+        height: 1240px;
+        width: 100%;
+        /* border: 1px solid black; */
+    }
+    .busInsert {
+        height: 200px;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        /* border-bottom: 1px solid #878787; */
+    }
+    .busImgBox {
+        display: none;
+    }
+    .busImg {
+        display: none;
+        width: 60px;
+        height: 60px;
+    }
+    .boxWrapper {
+        width: 240px;
+        height: 100px;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+        background-color: #EE5B3B;
+        border-radius: 10px;
+        margin-top: 8px;
+        margin-bottom: 8px;
+    }
+    
+    .menuTitle {
+        display: none;
+    }
+}
+
+@media screen and (min-width: 950px) {
+    .busTimeHero {
+        height: 1400px;
+        width: calc(100% - 200px);
+        /* border: 1px solid black; */
+    }
+    .busInsert {
+        height: 200px;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        /* border-bottom: 1px solid #878787; */
+    }
+    .busImgBox {
+        display: flex;
+    }
+    .busImg {
+        display: flex;
+        width: 60px;
+        height: 60px;   
+    }
+    .boxWrapper {
+        width: 240px;
+        height: 100px;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+        background-color: #EE5B3B;
+        border-radius: 10px;
+    }
+    
+    
+}
+
+.hero {
+    display: flex;
+    justify-content: center;
+}
+
+.busInsertBox {
+    height: 260px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 1px solid #878787;
+}
+
+.boxName {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 8px;
+}
+
+.startBox, .stopBox {
+    width: 200px;
+    height: 30px;
+    display: flex;
+    /* font-size: 24px; */
+    border-radius: 10px;
+}
+
+.startBox::-ms-expand {
+    display: none;
+}
+
+.stopBox::-ms-expand {
+    display: none;
+}
+
+.busInsertBtn {
+    width: 100px;
+    height: 30px;
+    /* background-color: #EE5B3B; */
+    background-color: #d9d9d9;
+    border: none;
+    border-radius: 10px;
+
+}
+
+.busInsertBtn:hover {
+    background-color: #EE5B3B;
+    color: white;
+    cursor: pointer;
+}
+
+.busText {
+    /* border: 1px solid black; */
+    width: 160px;
+    /* height: 40px; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+    font-family: "lato";
+    background-color: white;
+    flex-direction: column;
+    /* border-radius: 10px; */
+}
+
+.busTextB {
+    border-left: 1px solid #878787 ;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+.busTextF {
+    /* border-left: 1px solid #878787 ; */
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+}
+
+.busTimeText {
+    margin: 4px;
+    font-size: 18px;
+    /* border-bottom: 1px solid #000; */
+    height: 20px;
+}
+
+.HtoS {
+    display: none;
+    
+    background-color: #EE5B3B;
+    padding: 24px;
+    margin: 24px;
+    border-radius: 10px;
+}
+.SintoH {
+    display: none;
+    /* display: flex; */
+    background-color: #EE5B3B;
+    padding: 24px;
+    margin: 24px;
+    border-radius: 10px;
+}
+
+
+
+.busEtcBox {
+    /* border: 1px solid black; */
+    width: 320px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+    font-family: "lato";
+    background-color: white;
+    flex-direction: column;
+    /* margin-left: 24px; */
+    border-radius: 10px;
+}
+
+.HtoS {
+    display: none;
+    /* display: flex; */
+    background-color: #EE5B3B;
+    padding: 24px;
+    margin: 24px;
+    border-radius: 10px;
+}
+
+.HtoHami {
+    display: none;
+    /* display: flex; */
+    background-color: #EE5B3B;
+    padding: 24px;
+    margin: 24px;
+    border-radius: 10px;
+
+}
+
+.SouttoH {
+    display: none;
+    /* display: flex; */
+    background-color: #EE5B3B;
+    padding: 24px;
+    margin: 24px;
+    border-radius: 10px;
+}
+
+.HamitoH {
+    display: none;
+    /* display: flex; */
+    background-color: #EE5B3B;
+    padding: 24px;
+    margin: 24px;
+    border-radius: 10px;
+}
+
+.busTimeSection {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.defaultImgBox {
+    background-color: #EE5B3B;
+    width: 640px;
+    height: 400px;
+    border-radius: 30px;
+    padding: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 16px;
+    /*주석 처리 하기*/
+    display: none;
+}
+
+.defaultText {
+    width: 600px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 30px;
+    margin: 4px;
+    /* background-color: white; */
+}
+
+.defaultImg {
+    background-color: white;
+    width: 600px;
+    margin: 0 auto;
+    border-radius: 30px;
+}
+
+.defaultImgItem {
+    width: 600px;
+}

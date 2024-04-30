@@ -1,0 +1,49 @@
+{% load static %}
+{% include 'headerBox.html' %}
+{% block head %}
+    <title>HIHU3.0</title>
+
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/todayGetStyle.css' %}">
+{% endblock %}
+    <div class = "hero">
+        <div class="todayShopHero">
+            <div class = "menuTitle">
+                <h2 class = "tSemi menuTText tBlack">오늘 뭐 먹지? - {{ shopKind }}</h2>
+            </div>
+            <div class = "menuSelectBox">
+
+                <div class = "selectMenuBox">
+                    <div class="selectContainer">
+                        <!--여기에 식당 이름 넣기-->
+                        <div class="menuTText mentSectionCover">
+                            오늘의 메뉴
+                        </div>
+                        <div class="itemCoverImgSection">
+                            <img class = "itemImg" src="{% static 'img/undraw_eating_together_re_ux62.svg' %}" alt="">
+                        </div>
+                        <div class="itemImgSection">
+                            {% if shopDetail.shopImg %}
+                                <img class = "itemImg" src="{{ shopDetail.shopImg.url }}" alt="">
+                            {% else %}
+                                <img class = "itemImg" src="{% static 'img/DefalutImg.png' %}" alt="">
+                            {% endif %}
+                        </div>
+                        <div class="itemExSection">
+                            <p class = "mainText tBlack">{{ shopDetail.address }}</p>
+                        </div>
+                        <div class="selectBtnSection">
+                            <!--뽑기 버튼 Default로 넣고 뽑고 나면 다시 뽑기 등장, 메뉴 보기도 함께 등장-->
+                            <button type="button" class = "getBtn selectBtn mainText tBlack">뽑기</button>
+                            <a href = "" class = "reGetBtn selectBtn mainText tBlack">다시 뽑기</a>
+                            <a href="{{ shopDetail.get_absolute_url }}" class = "seeMenuBtn selectBtn mainText tBlack">메뉴 보기</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% include 'footerBox.html' %}
+<script src = "/static/js/today.js"></script>
+</body>
+</html>
